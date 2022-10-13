@@ -12,6 +12,7 @@ stop_words=set(nltk.corpus.stopwords.words('english'))
 lemmatizer = WordNetLemmatizer()
 from rank_bm25 import *
 
+
 def preprocessing(documents):
   documents_clean = []
   for d in documents:
