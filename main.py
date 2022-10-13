@@ -3,7 +3,6 @@ import docx
 from pptx import Presentation
 import re
 import string
-import magic
 import nltk
 import streamlit as st
 nltk.download('all')
