@@ -1,1 +1,6 @@
-
+PyPDF2
+python-docx
+python-pptx
+nltk
+streamlit
+rank_bm25
