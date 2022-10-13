@@ -1,4 +1,3 @@
-import os
 import PyPDF2 as pdf
 import docx
 from pptx import Presentation
