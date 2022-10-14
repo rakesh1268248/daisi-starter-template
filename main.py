@@ -1,3 +1,4 @@
+st.text('debug')
 import PyPDF2 as pdf
 import docx
 from pptx import Presentation
@@ -11,7 +12,7 @@ from nltk.stem import WordNetLemmatizer
 stop_words=set(nltk.corpus.stopwords.words('english'))
 lemmatizer = WordNetLemmatizer()
 from rank_bm25 import *
-
+st.text('debug end')
 
 def preprocessing(documents):
   documents_clean = []
