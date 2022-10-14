@@ -37,39 +37,39 @@ def preprocessing(documents):
   return documents_clean
 
 def search_report(documents_clean,Enter_text):
-        tokenized_corpus = [doc.split(" ") for doc in documents_clean]
-        bm25 = BM25Okapi(tokenized_corpus)
-        tokenized_query = Enter_text.split()
-        # doc_scores = bm25.get_scores(tokenized_query)
-        result=bm25.get_top_n(tokenized_query,documents_clean , n=5)
-        st.text(result)
+  tokenized_corpus = [doc.split(" ") for doc in documents_clean]
+  bm25 = BM25Okapi(tokenized_corpus)
+  tokenized_query = Enter_text.split()
+  # doc_scores = bm25.get_scores(tokenized_query)
+  result=bm25.get_top_n(tokenized_query,documents_clean , n=5)
+  st.text(result)
   
 def st_ui():
-    st.set_page_config(layout = "wide")
-    st.text('debug point2')
-    st.title("Auto Review Legal contracts - DocumentAI")
+  st.set_page_config(layout = "wide")
+  st.text('debug point2')
+  st.title("Auto Review Legal contracts - DocumentAI")
     
-    fileupload = st.sidebar.file_uploader("Upload a Contract here")
-    select_category = st.sidebar.selectbox("Endpoint selection", ["category", "PDF", 'Word Document','PPT'])
-    Enter_text = st.sidebar.text_input("Text to search", "please enter the text")
-    st.text(fileupload)
-    Button=st.sidebar.button('Analyze_contract')
-    st.text('debug point 3')
+  fileupload = st.sidebar.file_uploader("Upload a Contract here")
+  select_category = st.sidebar.selectbox("Endpoint selection", ["category", "PDF", 'Word Document','PPT'])
+  Enter_text = st.sidebar.text_input("Text to search", "please enter the text")
+  st.text(fileupload)
+  Button=st.sidebar.button('Analyze_contract')
+  st.text('debug point 3')
    
-    if fileupload is not None:
-      text=[]
-      st.text('debug point 4')
-      if select_category == "PDF":
-        f=open(fileupload,'rb')
-        reader = pdf.PdfFileReader(f)
-        n_pages = len(reader.pages)
-        text.append(pageObj.extractText().lower().split('\n'))
-      elif select_category =="Word Document":
-        doc = docx.Document(fileupload)
-        for i in range(len(doc.paragraphs)):
-          text.append(doc.paragraphs[i].text)
-    cleaned_document=preprocessing(text)
-    search_report(cleaned_document)
+  if fileupload is not None:
+    text=[]
+    st.text('debug point 4')
+    if select_category == "PDF":
+      f=open(fileupload,'rb')
+      reader = pdf.PdfFileReader(f)
+      n_pages = len(reader.pages)
+      text.append(pageObj.extractText().lower().split('\n'))
+    elif select_category =="Word Document":
+      doc = docx.Document(fileupload)
+      for i in range(len(doc.paragraphs)):
+        text.append(doc.paragraphs[i].text)
+  cleaned_document=preprocessing(text)
+  search_report(cleaned_document)
     
 
 if __name__ == "__main__":
