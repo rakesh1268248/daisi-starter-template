@@ -40,10 +40,10 @@ def preprocessing(documents):
     documents_clean.append(document_test)
   return documents_clean
 
-def search_report(documents_clean,Enter_text):
+def search_report(documents_clean,query):
   tokenized_corpus = [doc.split(" ") for doc in documents_clean]
   bm25 = BM25Okapi(tokenized_corpus)
-  tokenized_query = Enter_text.split()
+  tokenized_query = query.split()
   # doc_scores = bm25.get_scores(tokenized_query)
   result=bm25.get_top_n(tokenized_query,documents_clean , n=5)
   st.text(result)
@@ -65,14 +65,15 @@ def st_ui():
       doc = return_doc_from_bytes(pdfbytes)
       for page in doc:
         text+=(page.get_text().split('\n'))
-      st.text('debug point 5')
     elif select_category =="Word Document":
       doc = docx.Document(fileupload)
       for i in range(len(doc.paragraphs)):
         text.append(doc.paragraphs[i].text)
+  st.text('debug point 1')
   st.text(text)
   cleaned_document=preprocessing(text)
-  search_report(cleaned_document)
+  st.text('debug point 2')
+  search_report(cleaned_document,Enter_text)
  
 
 if __name__ == "__main__":
