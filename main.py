@@ -45,8 +45,8 @@ def search_report(documents_clean,Enter_text):
         st.text(result)
   
 def st_ui():
-    st.text('debug point2')
     st.set_page_config(layout = "wide")
+    st.text('debug point2')
     st.title("Auto Review Legal contracts - DocumentAI")
     
     fileupload = st.sidebar.file_uploader("Upload a Contract here")
