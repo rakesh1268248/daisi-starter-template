@@ -52,6 +52,7 @@ def st_ui():
     select_category = st.sidebar.selectbox("Endpoint selection", ["category", "PDF", 'Word Document','PPT'])
     Enter_text = st.sidebar.text_input("Text to search", "please enter the text")
     st.text(fileupload)
+    Button=st.sidebar.button('Analyze_contract')
    
 #     if fileupload is not None:
 #       text=[]
