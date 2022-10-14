@@ -49,7 +49,7 @@ def st_ui():
   st.title("Auto Review Legal contracts - DocumentAI")
     
   fileupload = st.sidebar.file_uploader("Upload a Contract here")
-  select_category = st.sidebar.selectbox("Endpoint selection", ["category", "PDF", 'Word Document','PPT'])
+  select_category = st.sidebar.selectbox("select_category", ["category", "PDF", 'Word Document','PPT'])
   Enter_text = st.sidebar.text_input("Text to search", "please enter the text")
   st.text(fileupload)
   Button=st.sidebar.button('Analyze_contract')
@@ -67,6 +67,7 @@ def st_ui():
       doc = docx.Document(fileupload)
       for i in range(len(doc.paragraphs)):
         text.append(doc.paragraphs[i].text)
+  st.text(text[0])
   cleaned_document=preprocessing(text)
   search_report(cleaned_document)
     
