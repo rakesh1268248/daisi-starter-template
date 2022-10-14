@@ -64,7 +64,7 @@ def st_ui():
       pdfbytes = fileupload.getvalue()
       doc = return_doc_from_bytes(pdfbytes)
       for page in doc:
-        text.append(page.get_text().split('\n'))
+        text+=(page.get_text().split('\n'))
       st.text('debug point 5')
     elif select_category =="Word Document":
       doc = docx.Document(fileupload)
