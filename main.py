@@ -1,4 +1,5 @@
 import PyPDF2 as pdf
+import io
 import docx
 from pptx import Presentation
 import re
