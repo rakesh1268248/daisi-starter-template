@@ -11,7 +11,7 @@ from nltk.stem import WordNetLemmatizer
 stop_words=set(nltk.corpus.stopwords.words('english'))
 lemmatizer = WordNetLemmatizer()
 from rank_bm25 import *
-st.text('debug point1')
+
 
 def preprocessing(documents):
   documents_clean = []
