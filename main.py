@@ -58,7 +58,8 @@ def st_ui():
     text=[]
     st.text('debug point 4')
     if select_category == "PDF":
-      f=open(fileupload,'rb')
+      pdfbytes = fileupload.getvalue()
+      f=open(pdfbytes,'rb')
       reader = pdf.PdfFileReader(f)
       n_pages = len(reader.pages)
       for i in range(0,n_pages):
