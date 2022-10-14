@@ -61,13 +61,17 @@ def st_ui():
       f=open(fileupload,'rb')
       reader = pdf.PdfFileReader(f)
       n_pages = len(reader.pages)
-      text.append(pageObj.extractText().lower().split('\n'))
+      for i in range(0,n_pages):
+        # creating a page object
+        pageObj = reader.getPage(i)
+        # extracting text from page
+        text.append(pageObj.extractText().lower().split('\n'))
       st.text('debug point 5')
     elif select_category =="Word Document":
       doc = docx.Document(fileupload)
       for i in range(len(doc.paragraphs)):
         text.append(doc.paragraphs[i].text)
-  st.text(text[0])
+  st.text(text)
   cleaned_document=preprocessing(text)
   search_report(cleaned_document)
     
