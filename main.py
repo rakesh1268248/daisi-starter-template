@@ -46,8 +46,7 @@ def search_report(documents_clean,query):
   tokenized_query = query.split()
   # doc_scores = bm25.get_scores(tokenized_query)
   result=bm25.get_top_n(tokenized_query,documents_clean , n=5)
-  st.text(result)
-  
+  return result
 def st_ui():
   st.set_page_config(layout = "wide")
   st.title("Auto Review Legal contracts - DocumentAI")
@@ -73,7 +72,8 @@ def st_ui():
   st.text(text)
   cleaned_document=preprocessing(text)
   st.text('debug point 2')
-  search_report(cleaned_document,Enter_text)
+  result=search_report(cleaned_document,Enter_text)
+  st.text(result)
  
 
 if __name__ == "__main__":
