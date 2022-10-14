@@ -1,4 +1,4 @@
-import PyPDF2 as pdf
+import fitz
 import io
 import docx
 from pptx import Presentation
@@ -13,6 +13,9 @@ stop_words=set(nltk.corpus.stopwords.words('english'))
 lemmatizer = WordNetLemmatizer()
 from rank_bm25 import *
 
+def return_doc_from_bytes(pdfbytes):
+  doc = fitz.open(stream=pdfbytes)
+  return doc
 
 def preprocessing(documents):
   documents_clean = []
@@ -59,14 +62,9 @@ def st_ui():
     text=[]
     if select_category == "PDF":
       pdfbytes = fileupload.getvalue()
-      f=open(pdfbytes,'rb')
-      reader = pdf.PdfFileReader(f)
-      n_pages = len(reader.pages)
-      for i in range(0,n_pages):
-        # creating a page object
-        pageObj = reader.getPage(i)
-        # extracting text from page
-        text.append(pageObj.extractText().lower().split('\n'))
+      doc = return_doc_from_bytes(pdfbytes)
+      for page in doc:
+        text.append(page.get_text().split('\n'))
       st.text('debug point 5')
     elif select_category =="Word Document":
       doc = docx.Document(fileupload)
