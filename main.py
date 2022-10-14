@@ -72,7 +72,8 @@ def st_ui():
   st.text(text)
   cleaned_document=preprocessing(text)
   st.text('debug point 2')
-  result=search_report(cleaned_document,Enter_text)
+  if Enter_text:
+    result=search_report(cleaned_document,Enter_text)
   st.text(result)
  
 
