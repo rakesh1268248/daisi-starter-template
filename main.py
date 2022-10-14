@@ -56,7 +56,6 @@ def st_ui():
    
   if fileupload is not None:
     text=[]
-    st.text('debug point 4')
     if select_category == "PDF":
       pdfbytes = fileupload.getvalue()
       f=open(pdfbytes,'rb')
