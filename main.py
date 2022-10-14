@@ -53,7 +53,6 @@ def st_ui():
   Enter_text = st.sidebar.text_input("Text to search", "please enter the text")
   st.text(fileupload)
   Button=st.sidebar.button('Analyze_contract')
-  st.text('debug point 3')
    
   if fileupload is not None:
     text=[]
@@ -63,6 +62,7 @@ def st_ui():
       reader = pdf.PdfFileReader(f)
       n_pages = len(reader.pages)
       text.append(pageObj.extractText().lower().split('\n'))
+      st.text('debug point 5')
     elif select_category =="Word Document":
       doc = docx.Document(fileupload)
       for i in range(len(doc.paragraphs)):
