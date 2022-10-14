@@ -1,4 +1,3 @@
-st.text('debug')
 import PyPDF2 as pdf
 import docx
 from pptx import Presentation
@@ -12,7 +11,7 @@ from nltk.stem import WordNetLemmatizer
 stop_words=set(nltk.corpus.stopwords.words('english'))
 lemmatizer = WordNetLemmatizer()
 from rank_bm25 import *
-st.text('debug end')
+st.text('debug point1')
 
 def preprocessing(documents):
   documents_clean = []
@@ -46,6 +45,7 @@ def search_report(documents_clean,Enter_text):
         st.text(result)
   
 def st_ui():
+    st.text('debug point2')
     st.set_page_config(layout = "wide")
     st.title("Auto Review Legal contracts - DocumentAI")
     
@@ -54,9 +54,11 @@ def st_ui():
     Enter_text = st.sidebar.text_input("Text to search", "please enter the text")
     st.text(fileupload)
     Button=st.sidebar.button('Analyze_contract')
+    st.text('debug point 3')
    
     if fileupload is not None:
       text=[]
+      st.text('debug point 4')
       if select_category == "PDF":
         f=open(fileupload,'rb')
         reader = pdf.PdfFileReader(f)
