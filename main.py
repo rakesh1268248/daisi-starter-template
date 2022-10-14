@@ -74,7 +74,7 @@ def st_ui():
   st.text(text)
   cleaned_document=preprocessing(text)
   search_report(cleaned_document)
-    
+ 
 
 if __name__ == "__main__":
     st_ui()
