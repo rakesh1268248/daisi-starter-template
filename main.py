@@ -13,6 +13,9 @@ stop_words=set(nltk.corpus.stopwords.words('english'))
 lemmatizer = WordNetLemmatizer()
 from rank_bm25 import *
 
+import pydaisi as pyd
+stable_diffusion = pyd.Daisi("laiglejm/Stable Diffusion")
+
 def return_doc_from_bytes(pdfbytes):
   doc = fitz.open(stream=pdfbytes)
   return doc
