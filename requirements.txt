@@ -1,4 +1,6 @@
-PyMuPDF
+pymupdf
+python-docx
+python-pptx
 nltk
-wordcloud
-matplotlib
+rank_bm25
+streamlit
