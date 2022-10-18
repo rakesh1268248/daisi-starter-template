@@ -1,5 +1,8 @@
-matplotlib
-wordcloud
+pymupdf
+python-docx
+python-pptx
 nltk
+rank_bm25
 streamlit
-pandas
+wordcloud
+matplotlib
